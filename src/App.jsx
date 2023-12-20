@@ -1,8 +1,11 @@
+import Movies from "./components/Movies/Movies";
+import Navbar from "./components/Navbar/Navbar";
 function App() {
   return (
-    <>
-      <h1 className="bg-red-500 text-center ">hello</h1>
-    </>
+    <main>
+      <Navbar />
+      <Movies/>
+    </main>
   );
 }
 
