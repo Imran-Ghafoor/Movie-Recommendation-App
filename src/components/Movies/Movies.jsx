@@ -4,7 +4,7 @@ import Pagination from "../Pagination/Pagination";
 
 const Movies = () => {
   return (
-    <section className="w-full h-screen border p-5">
+    <section className="w-full h-auto border p-5">
       <MovieList />
       {/* <Pagination /> */}
     </section>
