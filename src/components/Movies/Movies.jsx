@@ -4,9 +4,9 @@ import Pagination from "../Pagination/Pagination";
 
 const Movies = () => {
   return (
-    <section className="w-full h-auto border p-4">
+    <section className="w-full h-auto border p-4 flex flex-col justify-center items-center">
       <MovieList />
-      {/* <Pagination /> */}
+      <Pagination />
     </section>
   );
 };
