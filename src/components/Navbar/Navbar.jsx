@@ -1,12 +1,15 @@
 import React from "react";
 import { FaSearchPlus } from "react-icons/fa";
 import { AiFillEye } from "react-icons/ai";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
     <div className="w-full px-7 py-5 bg-light-blue text-white flex justify-center items-center">
       <div className=" w-full max-w-[1700px] flex justify-between items-center ">
-        <p className="font-black text-2xl">Movie'sMars</p>
+        <Link to="/" className="font-black text-3xl">
+          MovieMars
+        </Link>
         <div className=" border border-purple-600 relative hidden sm:block">
           <input
             type="text"
@@ -15,9 +18,9 @@ const Navbar = () => {
           />
           <FaSearchPlus className="absolute right-3 top-[50%] -translate-y-[50%] " />
         </div>
-        <button className="py-3 px-5 bg-dark-Gray rounded-lg text-sm">
+        <Link to="/genre" className="py-3 px-5 bg-dark-Gray rounded-lg text-sm">
           Select Genre
-        </button>
+        </Link>
       </div>
     </div>
   );
