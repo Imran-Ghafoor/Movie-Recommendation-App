@@ -1,9 +1,16 @@
 import React from "react";
 import Star from "../Star";
 import { AiOutlineStar } from "react-icons/ai";
-
 import { GoTriangleRight } from "react-icons/go";
+import { useParams } from "react-router-dom";
+import { useGetMovieQuery } from "../../services/Api";
+
 const MovieInformation = () => {
+  const { id } = useParams();
+  console.log(id);
+
+  const { data, isFetching, error } = useGetMovieQuery(id);
+  console.log(data);
   return (
     <section
       className="  w-full flex flex-col justify-center items-center max-w-[1700px] 
@@ -11,21 +18,30 @@ const MovieInformation = () => {
     >
       <div className=" border  w-full flex flex-col justify-center items-center lg:w-1/2">
         <div className=" w-1/2 my-5 shadow-lg shadow-light-blue rounded-2xl overflow-hidden">
-          <img src="./poster.png" alt="poster" className="w-full" />
+          <img
+            src={
+              data?.poster_path
+                ? `http://image.tmdb.org/t/p/w500/${data?.poster_path}`
+                : "https://www.fillmurray.com/200/300"
+            }
+            alt="poster"
+            className="w-full"
+          />
         </div>
       </div>
       <div className="  w-full  flex flex-col justify-start items-center text-white p-5 lg:w-1/2">
         {/* info all */}
         <div className="w-[70%]">
           <div className="border text-center w-full">
-            <h1 className="font-black text-4xl ">Batman</h1>
-            <p className="text-sm mt-2">
-              Every good this in this world started with a dream
-            </p>
+            <h1 className="font-black text-4xl ">{data?.title}</h1>
+            <p className="text-sm mt-2">{data?.tagline}</p>
           </div>
           <div className="border w-full flex flex-col justify-center items-center mt-3 lg:justify-between lg:flex-row ">
             <Star />
-            <p className="">117min / 2023-12-06 / English</p>
+            <p className="">
+              {data?.runtime} min / {data?.release_date} /{" "}
+              {data?.original_language}{" "}
+            </p>
           </div>
           <div className="border mt-3 w-full">
             <h1 className="font-bold mb-3">Genre:</h1>
@@ -44,61 +60,14 @@ const MovieInformation = () => {
 
           <div className="border mt-3">
             <h1 className="font-bold">Information:</h1>
-            <p className="border mt-3">
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nulla
-              nostrum sapiente cum quidem. Distinctio at quas sit iste
-              recusandae numquam. Nulla, obcaecati consequatur. Esse magnam
-              libero doloremque, illum ducimus atque.
-            </p>
+            <p className="border mt-3">{data?.overview}</p>
           </div>
           <div className="w-full border mt-5">
             <h1 className="font-bold mb-3">Top Cast:</h1>
             <div className="border flex flex-wrap justify-center items-center gap-2">
               <div className=" flex flex-col justify-center items-center">
                 <div className="w-[100px] rounded-lg overflow-hidden">
-                  <img
-                    src="https://images.unsplash.com/photo-1587944308214-cb558d66cfe6?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                    alt="cast image"
-                  />
-                </div>
-                <p className="whitespace-nowrap overflow-hidden overflow-ellipsis">
-                  cast name
-                </p>
-              </div>
-
-              <div className=" flex flex-col justify-center items-center">
-                <div className="w-[100px] rounded-lg overflow-hidden">
-                  <img
-                    src="https://images.unsplash.com/photo-1587944308214-cb558d66cfe6?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                    alt="cast image"
-                  />
-                </div>
-                <p className="whitespace-nowrap overflow-hidden overflow-ellipsis">
-                  cast name
-                </p>
-              </div>
-              <div className=" flex flex-col justify-center items-center">
-                <div className="w-[100px] rounded-lg overflow-hidden">
-                  <img
-                    src="https://images.unsplash.com/photo-1587944308214-cb558d66cfe6?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                    alt="cast image"
-                  />
-                </div>
-                <p className="whitespace-nowrap overflow-hidden overflow-ellipsis">
-                  cast name
-                </p>
-              </div>
-              <div className=" flex flex-col justify-center items-center">
-                <div className="w-[100px] rounded-lg overflow-hidden">
-                  <img
-                    src="https://images.unsplash.com/photo-1587944308214-cb558d66cfe6?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                    alt="cast image"
-                  />
-                </div>
-                <p className="whitespace-nowrap overflow-hidden overflow-ellipsis">
-                  cast name
-                </p>
-              </div>
+                 {data?.credits?.cast.map((character,index)=>)}
             </div>
           </div>
           <div className=" border w-full mt-3 flex justify-start items-center">
