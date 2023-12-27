@@ -22,7 +22,7 @@ const Movie = ({ movie, index }) => {
         {movie?.title}
       </h1>
       <div className="mt-2">
-        <Star />
+        <Star starVote={movie?.vote_average} />
       </div>
     </div>
   );
