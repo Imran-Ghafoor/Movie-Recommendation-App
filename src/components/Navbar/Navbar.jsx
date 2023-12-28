@@ -13,12 +13,12 @@ const Navbar = () => {
     dispatch(searchMovie(query));
   };
   return (
-    <div className="w-full px-7 py-5 bg-light-blue text-white flex justify-center items-center">
+    <div className="w-full px-7 py-5 bg-red-600 text-white flex justify-center items-center">
       <div className=" w-full max-w-[1700px] flex justify-between items-center ">
-        <Link to="/" className="font-black text-3xl">
+        <Link to="/" className="font-black text-3xl hover:text-green-600">
           MovieMars
         </Link>
-        <div className=" border border-purple-600 relative hidden sm:block">
+        <div className=" relative hidden sm:block">
           <input
             type="text"
             placeholder="Enter a movie"
@@ -31,7 +31,10 @@ const Navbar = () => {
             onClick={handleKeyPress}
           />
         </div>
-        <Link to="/genre" className="py-3 px-5 bg-dark-Gray rounded-lg text-sm">
+        <Link
+          to="/genre"
+          className="py-3 px-5 bg-dark-Gray hover:bg-green-600 rounded-lg text-sm"
+        >
           Select Genre
         </Link>
       </div>

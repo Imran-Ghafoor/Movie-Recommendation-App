@@ -6,7 +6,7 @@ import { useGetGenresQuery } from "../../services/Api";
 const Genre = () => {
   const { data } = useGetGenresQuery();
   return (
-    <section className="text-white">
+    <section className="text-white ">
       <TopBar />
       <Movies movie={data} />
     </section>

@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { useGetMoviesQuery } from "../../services/Api";
 import MovieList from "../MovieList/MovieList";
-import { selectGenre } from "../../Feature/currentGenre";
 import Pagination from "../Pagination/Pagination";
 
 const Movies = () => {
@@ -25,9 +24,7 @@ const Movies = () => {
   if (!data.results.length) {
     return (
       <div className="flex items-center mt-[20px]">
-        <h4>No Movies Match That Name</h4>
-        <br />
-        Look for Something Else
+        <h4>No Movies Match That Name |Look for Something Else</h4>
       </div>
     );
   }
