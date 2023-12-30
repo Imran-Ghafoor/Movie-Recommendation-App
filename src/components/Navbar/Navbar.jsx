@@ -25,7 +25,7 @@ const Navbar = () => {
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             className="bg-dark-Gray p-3 text-light-Gray border-none outline-none rounded-lg w-[250px] text-sm placeholder:text-sm py-3 pl-4 pr-10"
-          />
+          />``
           <AiFillEye
             className="absolute right-3 top-[50%] -translate-y-[50%] cursor-pointer "
             onClick={handleKeyPress}
@@ -35,7 +35,7 @@ const Navbar = () => {
           to="/genre"
           className="py-3 px-5 bg-dark-Gray hover:bg-green-600 rounded-lg text-sm"
         >
-          Select Genre
+          Select Movie
         </Link>
       </div>
     </div>
